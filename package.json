@@ -2,6 +2,7 @@
   "name": "webcomponent-template",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/reactapp",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -19,7 +20,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "run-s build:react build:removeExistingResources build:moveNewResources",
+    "build:react": "cross-env GENERATE_SOURCEMAP=false node scripts/build.js",
+    "build:removeExistingResources": "shx rm -rf deployer/resources/*",
+    "build:moveNewResources": "shx mv build/ deployer/resources/react",
+    "build:mta": "mbt build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,5 +47,11 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(@ui5|lit-html)).*\\.js$"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "mbt": "^1.2.4",
+    "npm-run-all": "^4.1.5",
+    "shx": "^0.3.3"
   }
 }

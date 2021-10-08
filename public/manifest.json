@@ -21,5 +21,11 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "sap.app": {
+    "id": "reactapp",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  }
 }
